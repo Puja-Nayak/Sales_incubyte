@@ -1,0 +1,75 @@
+SQL queries for the questions below respectively.
+
+1. What store has the max sale offline store or online purchase?
+SQL - 
+SELECT StoreType, SUM(TransactionAmount) AS total_sales
+FROM "assessment_dataset"
+GROUP BY StoreType
+ORDER BY total_sales DESC
+LIMIT 1;
+
+2. Which city has the highest sale?
+SQL-
+SELECT City, SUM(TransactionAmount) AS total_purchase
+FROM "assessment_dataset"
+GROUP BY City
+ORDER BY total_purchase DESC
+LIMIT 3;
+
+3. What gender has the max loyalty points?
+SQL- 
+SELECT CustomerGender, SUM(LoyaltyPoints) AS total_loyalty_points
+FROM "assessment_dataset"
+GROUP BY CustomerGender
+ORDER BY total_loyalty_points DESC
+LIMIT 1;
+
+4. What is the most ordered payment method?
+SQl-
+SELECT PaymentMethod, COUNT(*) AS usage_count
+FROM "assessment_dataset"
+GROUP BY PaymentMethod
+ORDER BY usage_count DESC
+LIMIT 1;
+
+5. What age group order the most?
+SQl-
+SELECT CustomerAge, SUM(TransactionAmount) AS total_purchase
+FROM "assessment_dataset"
+GROUP BY CustomerAge
+ORDER BY total_purchase DESC
+LIMIT 1;
+
+6. Which city takes the max days to deliver the order?
+SQL-
+SELECT City, MAX(DeliveryTimeDays) AS max_delivery_time
+FROM "assessment_dataset"
+GROUP BY City
+ORDER BY max_delivery_time DESC
+LIMIT 1;
+
+7. Which item is ordered the most?
+SQL - 
+SELECT ProductName, COUNT(*) AS total_orders
+FROM "assessment_dataset"
+GROUP BY ProductName
+ORDER BY total_orders DESC
+LIMIT 1;
+
+8. Which item is ordered the most by what gender and age group and in what region?
+SQL-
+SELECT 
+    ProductName, 
+    Region, 
+    CustomerAge, 
+    COUNT(*) AS total_orders
+FROM "assessment_dataset"
+GROUP BY ProductName, Region, CustomerAge
+ORDER BY total_orders DESC
+LIMIT 7;
+
+
+
+
+
+
